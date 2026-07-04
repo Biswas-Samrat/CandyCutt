@@ -79,6 +79,12 @@ export class AudioManager {
     if (this.currentMusicKey === key) return;
     if (!this.settings.musicEnabled) return;
 
+    // Defensive check: ensure game and sound manager exist
+    if (!this.game || !this.game.sound) {
+      console.warn('[AudioManager] Game or sound manager not initialized');
+      return;
+    }
+
     if (!this.hasSound(key)) return;
 
     const prevMusic = this.currentMusic;
@@ -130,6 +136,12 @@ export class AudioManager {
     this.currentMusic = null;
     this.currentMusicKey = null;
 
+    // Defensive check: ensure game exists
+    if (!this.game) {
+      music.stop();
+      return;
+    }
+
     if (fadeMs > 0) {
       this.game.tweens.add({
         targets: music,
@@ -165,6 +177,11 @@ export class AudioManager {
     if (!this.settings.sfxEnabled) return;
     if (!this.hasSound(key)) return;
 
+    // Defensive check: ensure game and sound manager exist
+    if (!this.game || !this.game.sound) {
+      return;
+    }
+
     try {
       this.game.sound.play(key, {
         volume: this.settings.sfxVolume * volumeScale,
@@ -195,7 +212,7 @@ export class AudioManager {
   setMusicVolume(volume: number): void {
     this.settings = { ...this.settings, musicVolume: Math.max(0, Math.min(1, volume)) };
 
-    if (this.currentMusic && this.currentMusic instanceof Phaser.Sound.BaseSound) {
+    if (this.currentMusic && this.currentMusic instanceof Phaser.Sound.BaseSound && this.game) {
       if ('setVolume' in this.currentMusic) {
         (this.currentMusic as Phaser.Sound.WebAudioSound | Phaser.Sound.HTML5AudioSound)
           .setVolume(this.settings.musicVolume);
@@ -241,6 +258,11 @@ export class AudioManager {
   playCountdown(): void   { this.playSFX(AUDIO_KEYS.SFX_COUNTDOWN, 0.7); }
   playConfetti(): void    { this.playSFX(AUDIO_KEYS.SFX_CONFETTI); }
   playAchievement(): void { this.playSFX(AUDIO_KEYS.SFX_ACHIEVEMENT); }
+
+  /** Play victory/level complete music. */
+  playVictory(): void {
+    this.playMusic(AUDIO_KEYS.MUSIC_VICTORY, 300);
+  }
 
   // ── Internal helpers ──────────────────────────────────────────────────────
 
