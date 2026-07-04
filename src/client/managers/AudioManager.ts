@@ -89,7 +89,7 @@ export class AudioManager {
 
     const prevMusic = this.currentMusic;
 
-    if (prevMusic) {
+    if (prevMusic && this.game) {
       this.game.tweens.add({
         targets: prevMusic,
         volume: 0,
@@ -118,11 +118,13 @@ export class AudioManager {
       return;
     }
 
-    this.game.tweens.add({
-      targets: newMusic,
-      volume: this.settings.musicVolume,
-      duration: fadeMs,
-    });
+    if (this.game) {
+      this.game.tweens.add({
+        targets: newMusic,
+        volume: this.settings.musicVolume,
+        duration: fadeMs,
+      });
+    }
 
     this.currentMusic = newMusic;
     this.currentMusicKey = key;
@@ -136,13 +138,7 @@ export class AudioManager {
     this.currentMusic = null;
     this.currentMusicKey = null;
 
-    // Defensive check: ensure game exists
-    if (!this.game) {
-      music.stop();
-      return;
-    }
-
-    if (fadeMs > 0) {
+    if (fadeMs > 0 && this.game) {
       this.game.tweens.add({
         targets: music,
         volume: 0,
