@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: #0f0a1c;
+  color: #f8f4ff;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  background: radial-gradient(circle, #2d1b69 0%, #0f0a1c 100%);
+}
+
+/* Background glowing circles */
+.candy-bg-deco {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 1;
+}
+
+.candy-bg-deco.c1 {
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 107, 157, 0.25);
+  top: -20px;
+  left: -20px;
+}
+
+.candy-bg-deco.c2 {
+  width: 200px;
+  height: 200px;
+  background: rgba(168, 85, 247, 0.2);
+  bottom: -40px;
+  right: -40px;
+}
+
+.panel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(168, 85, 247, 0.4);
+  border-radius: 20px;
+  padding: 30px 40px;
+  max-width: 90%;
+  width: 380px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.game-title {
+  font-size: 2.2em;
+  font-weight: 900;
+  color: #ff6b9d;
+  letter-spacing: 0.5px;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  line-height: 1.1;
+}
+
+.tagline {
+  font-size: 1.0em;
+  color: #ffd700;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.welcome-user {
+  margin-top: 10px;
+  font-size: 1.0em;
+  color: #c084fc;
+  font-style: italic;
+}
+
+.button-wrapper {
+  width: 100%;
+}
+
+.start-button {
+  background-color: #a855f7;
+  color: #ffffff;
+  border: none;
+  font-weight: 900;
+  width: 100%;
+  height: 52px;
+  font-size: 1.25em;
+  border-radius: 26px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
+  transition: all 0.25s ease;
+  border: 2px solid #b96cff;
+}
+
+.start-button:hover {
+  background-color: #b96cff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.6);
+}
+
+.start-button:active {
+  transform: translateY(1px);
+}
+
+.footer {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  font-size: 0.82em;
+  color: #8b7fb8;
+  z-index: 2;
+}
+
+.docs-link {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.docs-link:hover {
+  color: #ff6b9d;
+}
+
+.divider {
+  color: rgba(255, 255, 255, 0.15);
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="splash.css" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height, user-scalable=0"
+    />
+    
+    <!-- Preload Nunito Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <title>Candy Snip Saga - Inline Pre-load</title>
+  </head>
+  <body class="app">
+    <!-- Stylized candy backdrop elements for inline view decoration -->
+    <div class="candy-bg-deco c1"></div>
+    <div class="candy-bg-deco c2"></div>
+    
+    <div class="panel-container">
+      <div class="content">
+        <h1 class="game-title">CANDY SNIP SAGA</h1>
+        <p class="tagline">The Precision Pin-Cutting Challenge</p>
+        <div class="welcome-user" id="title">Loading...</div>
+      </div>
+      
+      <div class="button-wrapper">
+        <button class="start-button" id="start-button">PLAY GAME 🎮</button>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="docs-link" tabindex="0" id="docs-link">Rules</div>
+      <span class="divider">|</span>
+      <div class="docs-link" tabindex="0" id="playtest-link">r/Devvit</div>
+      <span class="divider">|</span>
+      <div class="docs-link" tabindex="0" id="discord-link">Discord</div>
+    </footer>
+    <script type="module" src="splash.ts" defer></script>
+  </body>
+</html>
