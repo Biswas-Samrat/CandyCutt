@@ -102,12 +102,6 @@ export class AudioManager {
       loop: true,
       volume: 0,
     });
-    }
-
-    const newMusic = this.game.sound.add(key, {
-      loop: true,
-      volume: 0,
-    });
 
     if (!newMusic) return;
 
