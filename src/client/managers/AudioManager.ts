@@ -79,7 +79,7 @@ export class AudioManager {
     if (this.currentMusicKey === key) return;
     if (!this.settings.musicEnabled) return;
 
-    // Defensive check: ensure game and sound manager exist
+    // CRITICAL: Defensive check - game/sound may not be initialized yet in WebView
     if (!this.game || !this.game.sound) {
       console.warn('[AudioManager] Game or sound manager not initialized');
       return;
@@ -96,6 +96,12 @@ export class AudioManager {
         duration: fadeMs,
         onComplete: () => { prevMusic.stop(); },
       });
+    }
+
+    const newMusic = this.game.sound.add(key, {
+      loop: true,
+      volume: 0,
+    });
     }
 
     const newMusic = this.game.sound.add(key, {
